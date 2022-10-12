@@ -1,0 +1,18 @@
+@{
+  Layout = "_Layout";
+}
+
+@using TraderJoes.Models;
+@model List<TraderJoes.Models.Product>;
+
+<h1>Products</h1>
+
+<ul>
+  @foreach(Product product in Model)
+  {
+    <li>@Html.ActionLink($"{product.Description}", "Details", new { id = product.ProductId } )</li>
+  }
+</ul>
+
+<p>@Html.ActionLink("Add new product", "Create")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>

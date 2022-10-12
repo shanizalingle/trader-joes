@@ -1,0 +1,44 @@
+@{
+  Layout = "_Layout";
+}
+
+@model TraderJoes.Models.Product
+
+<h2>Product Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h3>
+<h3>Due date: @Html.DisplayFor(model => model.DueDate)</h3>
+@if (@Model.Completed == true)
+{
+  <p>Task Status: Completed</p>
+}
+else
+{
+  <p>Task Status: Not Completed</p>
+}
+
+
+@if(@Model.JoinEntities.Count == 0)
+{
+  <p>This product does not belong to any departments</p>
+}
+else
+{
+  <h4>Departments the product belongs to:</h4>
+  <ul>
+  @foreach(var join in Model.JoinEntities)
+  {
+    <li>@join.Department.Name</li>
+    @using (Html.BeginForm("DeleteDepartment", "Products"))
+    {
+      @Html.Hidden("joinId", @join.DepartmentProductId)
+      <input type="submit" value="Delete"/>
+    }
+  }
+  </ul>
+}
+
+<p>@Html.ActionLink("Back to list", "Index")</p>
+<p>@Html.ActionLink("Edit Product", "Edit", new { id = Model.ProductId })</p>
+<p>@Html.ActionLink("Delete Product", "Delete", new { id = Model.ProductId })</p>
+<p>@Html.ActionLink("Add a Department", "AddDepartment", new { id = Model.ProductId })</p>

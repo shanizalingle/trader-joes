@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+@model TraderJoes.Models.Product
+
+<h2>Add a department</h2>
+
+<h4>Add a department to this task: @Html.DisplayFor(model => model.Description)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.ProductId)
+
+  @Html.Label("Select department")
+  @Html.DropDownList("DepartmentId")
+
+  <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("Back to list", "Index")</p>
