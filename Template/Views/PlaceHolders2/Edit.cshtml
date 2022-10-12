@@ -1,0 +1,30 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Template.Models.PlaceHolder2
+
+<h2>Edit</h2>
+
+<h4>Edit this task: @Html.DisplayFor(model => model.Description)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.PlaceHolder2Id)
+
+  @Html.LabelFor(model => model.Description)
+  @Html.EditorFor(model => model.Description)
+
+  @Html.Label("Select placeHolder")
+  @Html.DropDownList("PlaceHolderId")
+
+  @Html.Label("Change due date")
+  @Html.EditorFor(model => model.DueDate)
+  
+  @Html.Label("Mark Completed")
+  @Html.CheckBoxFor(model => model.Completed)
+
+  <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("Back to list", "Index")</p>
