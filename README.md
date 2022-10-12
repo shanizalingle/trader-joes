@@ -50,7 +50,7 @@ $ dotnet add package Pomelo.EntityFrameworkCore.MySql -v 5.0.0-alpha.2
 ```json
 {
   "ConnectionStrings": {
-      "DefaultConnection": "Server=localhost;Port=3306;database=shaniza_lingle;uid=root;pwd=YOUR_PASSWORD;"
+      "DefaultConnection": "Server=localhost;Port=3306;database=trader_joes;uid=root;pwd=YOUR_PASSWORD;"
   }
 }
 ```
