@@ -14,9 +14,6 @@
   @Html.Label("Select department")
   @Html.DropDownList("DepartmentId")
 
-  @Html.Label("Add due date")
-  @Html.TextBoxFor(model => model.DueDate, new { type = "date" })
-
   <input type="submit" value="Add new product" class="btn btn-default" />
 }
 <p>@Html.ActionLink("Show all products", "Index")</p>

@@ -19,8 +19,8 @@ namespace TraderJoes.Controllers
 
     public ActionResult Index()
     {
-      List<Product> sortedProducts = _db.Products.OrderBy(product => product.DueDate).ToList();
-      return View(sortedProducts);
+      List<Product> model = _db.Products.ToList();
+      return View(model);
     }
 
     public ActionResult Create()
@@ -30,7 +30,7 @@ namespace TraderJoes.Controllers
     }
 
     [HttpPost]
-    public ActionResult Create(Product product, int DepartmentId, bool Completed, DateTime DueDate)
+    public ActionResult Create(Product product, int DepartmentId)
     {
       _db.Products.Add(product);
       _db.SaveChanges();

@@ -7,16 +7,6 @@
 <h2>Product Details</h2>
 <hr />
 <h3>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h3>
-<h3>Due date: @Html.DisplayFor(model => model.DueDate)</h3>
-@if (@Model.Completed == true)
-{
-  <p>Task Status: Completed</p>
-}
-else
-{
-  <p>Task Status: Not Completed</p>
-}
-
 
 @if(@Model.JoinEntities.Count == 0)
 {
