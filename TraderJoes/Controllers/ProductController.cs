@@ -23,6 +23,8 @@ namespace TraderJoes.Controllers
       return View(model);
     }
 
+
+// ================================================CREATE ITEM (DELETE LATER)============================================================== 
     public ActionResult Create()
     {
       ViewBag.DepartmentId = new SelectList(_db.Departments, "DepartmentId", "Name");
@@ -41,6 +43,7 @@ namespace TraderJoes.Controllers
       }
       return RedirectToAction("Index");
     }
+// ========================================================================================================================================= 
 
     public ActionResult Details(int id)
     {
@@ -51,6 +54,12 @@ namespace TraderJoes.Controllers
       return View(thisProduct);
     }
 
+    // public ActionResult Add(int id)
+    // {
+
+    // }
+
+// ==================================================(DELETE LATER)==================================================================
     public ActionResult Edit(int id)
     {
       Product thisProduct = _db.Products.FirstOrDefault(product => product.ProductId == id);
@@ -69,7 +78,9 @@ namespace TraderJoes.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+// ====================================================================================================================================
 
+// ===================================================(DELETE LATER)===================================================================
     public ActionResult AddDepartment(int id)
     {
       var thisProduct = _db.Products.FirstOrDefault(product => product.ProductId == id);
@@ -87,7 +98,9 @@ namespace TraderJoes.Controllers
       }
       return RedirectToAction("Index");
     }
+// ====================================================================================================================================
 
+// ===================================================(DELETE LATER)===================================================================
     public ActionResult Delete(int id)
     {
       Product thisProduct = _db.Products.FirstOrDefault(product => product.ProductId == id);
@@ -111,5 +124,21 @@ namespace TraderJoes.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+// ====================================================================================================================================
+
+// Add products to cart
+    public ActionResult AddToCart()
+      {
+        ViewBag.CartId = new SelectList(_db.Carts, "CartId");
+        return View();
+      }
+
+      [HttpPost]
+      public ActionResult AddToCart(Product product)
+      {
+        _db.Products.Add(product);
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+      }
   }
 }
