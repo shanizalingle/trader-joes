@@ -3,6 +3,7 @@ using TraderJoes.Models;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace TraderJoes.Controllers
 {
@@ -38,6 +39,7 @@ namespace TraderJoes.Controllers
 
     public ActionResult Details(int id)
     {
+      ViewBag.ProductId = new SelectList (_db.Products, "ProductId", "Name");
       var thisDepartment = _db.Departments
         .Include(department => department.JoinEntities)
         .ThenInclude(join => join.Product)

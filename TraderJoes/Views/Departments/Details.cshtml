@@ -19,6 +19,7 @@ else
   @foreach(var join in Model.JoinEntities)
   {
     <li>@join.Product.Description</li>
+    @using (Html.BeginForm("AddToCart","ProductCart", FormMethod.Post));
   }
   </ul>
 }

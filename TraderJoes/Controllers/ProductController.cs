@@ -55,10 +55,6 @@ namespace TraderJoes.Controllers
       return View(thisProduct);
     }
 
-    // public ActionResult Add(int id)
-    // {
-
-    // }
 
 // ==================================================(DELETE LATER)==================================================================
     public ActionResult Edit(int id)
@@ -135,11 +131,12 @@ namespace TraderJoes.Controllers
       }
 
       [HttpPost]
-      public ActionResult AddToCart(Product product)
+      public ActionResult AddToCart(int CartId, int ProductId)
       {
-        _db.Products.Add(product);
+        ProductCart productcart = new ProductCart(){CartId = CartId, ProductId = ProductId};
+        _db.ProductCart.Add(productcart);
         _db.SaveChanges();
-        return RedirectToAction("Index");
+        return RedirectToAction("Index", "Products");
     }
   }
 }

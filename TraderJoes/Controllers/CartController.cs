@@ -15,23 +15,26 @@ namespace TraderJoes.Controllers
       _db = db;
     }
 
-    public ActionResult Index()
-    {
-      List<Cart> model = _db.Carts.ToList();
-      return View(model);
-    }
-
-    public ActionResult Create()
+    [HttpGet("/")]
+    public ActionResult Start()
     {
       return View();
     }
 
     [HttpPost]
-    public ActionResult Create(Cart cart)
+    public ActionResult Create()
     {
+      Cart cart = new Cart();
+      // add filter to check if cart is already made
       _db.Carts.Add(cart);
       _db.SaveChanges();
-      return RedirectToAction("Index");
+      return RedirectToAction("Index", "Home");
+    }
+
+    public ActionResult Index()
+    {
+      List<Cart> model = _db.Carts.ToList();
+      return View(model);
     }
 
     public ActionResult Details(int id)

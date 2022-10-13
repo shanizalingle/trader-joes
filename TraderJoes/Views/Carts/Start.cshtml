@@ -1,0 +1,10 @@
+@{
+  Layout = "_Layout";
+}
+
+@model TraderJoes.Models.Cart
+
+  @using (Html.BeginForm("Create", "Carts", FormMethod.Post))
+{
+  <input type="submit" value="Start Shopping">
+}
