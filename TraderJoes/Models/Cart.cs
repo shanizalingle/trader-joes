@@ -6,10 +6,9 @@ namespace TraderJoes.Models
   {
     public Cart()
     {
-      this.Products = new HashSet<Product>();
+      this.JoinProdCart = new HashSet<ProductCart>();
     }
-
     public int CartId { get; set; }
-    public virtual ICollection<Product> Products { get; set; }
+    public virtual ICollection<ProductCart> JoinProdCart { get; set; }
   }
 }

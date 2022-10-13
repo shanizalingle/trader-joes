@@ -17,6 +17,7 @@ namespace TraderJoes.Controllers
       _db = db;
     }
 
+// ===============DELETE==================================
     public ActionResult Index()
     {
       List<Product> model = _db.Products.ToList();
@@ -126,7 +127,7 @@ namespace TraderJoes.Controllers
     }
 // ====================================================================================================================================
 
-// Add products to cart
+ // Add products to cart
     public ActionResult AddToCart()
       {
         ViewBag.CartId = new SelectList(_db.Carts, "CartId");
@@ -139,6 +140,6 @@ namespace TraderJoes.Controllers
         _db.Products.Add(product);
         _db.SaveChanges();
         return RedirectToAction("Index");
-      }
+    }
   }
 }

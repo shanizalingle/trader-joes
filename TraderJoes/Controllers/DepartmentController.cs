@@ -21,6 +21,8 @@ namespace TraderJoes.Controllers
       return View(model);
     }
 
+
+// delete ==========================
     public ActionResult Create()
     {
       return View();
@@ -71,5 +73,6 @@ namespace TraderJoes.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+// ===============================
   }
 }

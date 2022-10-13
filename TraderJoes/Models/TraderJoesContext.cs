@@ -8,6 +8,7 @@ namespace TraderJoes.Models
     public DbSet<Product> Products { get; set; }
     public DbSet<Cart> Carts { get; set; }
     public DbSet<DepartmentProduct> DepartmentProduct { get; set; }
+    public DbSet<ProductCart> ProductCart { get; set; }
 
     public TraderJoesContext(DbContextOptions options) : base(options) { }
 

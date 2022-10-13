@@ -1,8 +1,8 @@
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using TraderJoes.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace TraderJoes.Controllers
 {
@@ -36,12 +36,16 @@ namespace TraderJoes.Controllers
 
     public ActionResult Details(int id)
     {
-      Cart thisCart = _db.Carts.FirstOrDefault(cart => cart.CartId == id);
+      var thisCart = _db.Carts
+        .Include(cart => cart.JoinProdCart)
+        .ThenInclude(join => join.Product)
+        .FirstOrDefault(cart => cart.CartId == id);
       return View(thisCart);
     }
+
     public ActionResult Edit(int id)
     {
-      var thisCart = _db.Carts.FirstOrDefault(cart => cart.CartId == id);
+      Cart thisCart = _db.Carts.FirstOrDefault(cart => cart.CartId == id);
       return View(thisCart);
     }
 
@@ -55,14 +59,14 @@ namespace TraderJoes.Controllers
 
     public ActionResult Delete(int id)
     {
-      var thisCart = _db.Carts.FirstOrDefault(cart => cart.CartId == id);
+      Cart thisCart = _db.Carts.FirstOrDefault(cart => cart.CartId == id);
       return View(thisCart);
     }
 
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id)
     {
-      var thisCart = _db.Carts.FirstOrDefault(cart => cart.CartId == id);
+      Cart thisCart = _db.Carts.FirstOrDefault(cart => cart.CartId == id);
       _db.Carts.Remove(thisCart);
       _db.SaveChanges();
       return RedirectToAction("Index");
